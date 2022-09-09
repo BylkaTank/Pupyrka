@@ -11,8 +11,8 @@ bool createPupyrka(bool pupyrka[12][12]){
 }
 
 bool popPupyrka(int x, int y, bool pupyrka[12][12]){
-    for (int i = 0; i < y; i++) {
-        for (int j = x; j < y; j++) {
+    for (int i = 0; i <= y; i++) {
+        for (int j = x; j <= y; j++) {
             if(pupyrka[j][i]){
                 cout << "Pop!";
                 pupyrka[j][i] = false;
@@ -44,11 +44,20 @@ int x, y;
 bool integrity = true;
 
 createPupyrka(pupyrka);
+
 while(checkPupyrka(pupyrka, integrity)){
-    cout << "Enter the coordinate x";
-    cin >> x;
-    cout << "Enter the coordinate y";
-    cin >> y;
+
+    for(;;){
+        cout << "Enter the coordinate x";
+        cin >> x;
+        cout << "Enter the coordinate y";
+        cin >> y;
+        if ((x < 12 && x >= 0) && (y < 12 && y >= 0)){
+            break;
+        } else {
+            cout << "The coordinate/s was entered incorrectly! Please try again.";
+        }
+    }
 
     popPupyrka(x,y,pupyrka);
 
